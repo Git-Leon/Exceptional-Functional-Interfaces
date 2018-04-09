@@ -1,4 +1,4 @@
-package leo.utils.functional;
+package gitleon.utils.functional;
 
 
 /**
@@ -32,7 +32,7 @@ public interface ExceptionalRunnable {
         try {
             method.run();
         } catch (Throwable throwable) {
-            throw new leo.utils.functional.ExceptionalInvocationError(throwable, errorMessage);
+            throw new ExceptionalInvocationError(throwable, errorMessage);
         }
     }
 

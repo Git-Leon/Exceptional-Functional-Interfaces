@@ -1,4 +1,4 @@
-package leo.utils.functional;
+package gitleon.utils.functional;
 
 
 /**
@@ -35,7 +35,7 @@ public interface ExceptionalConsumer<ArgumentType> {
         try {
             method.accept(arg);
         } catch (Throwable throwable) {
-            throw new leo.utils.functional.ExceptionalInvocationError(throwable, errorMessage);
+            throw new ExceptionalInvocationError(throwable, errorMessage);
         }
     }
 

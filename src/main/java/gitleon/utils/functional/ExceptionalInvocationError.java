@@ -1,4 +1,4 @@
-package leo.utils.functional;
+package gitleon.utils.functional;
 
 /**
  * Defers exceptions to an `Error` object which is checked during runtime

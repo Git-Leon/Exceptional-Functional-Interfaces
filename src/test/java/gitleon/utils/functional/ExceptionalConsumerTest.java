@@ -1,4 +1,4 @@
-package leo.utils.functional;
+package gitleon.utils.functional;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @author leon on 4/9/18.
  */
 public class ExceptionalConsumerTest {
-    private leo.utils.functional.ExceptionalBiFunction<Object, Object, Object[]> testFunction;
+    private ExceptionalBiFunction<Object, Object, Object[]> testFunction;
 
     @Before
     public void setup() {
@@ -41,7 +41,7 @@ public class ExceptionalConsumerTest {
         Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = leo.utils.functional.ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
+        Object[] actual = ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
 
         // Then
         boolean outcome = Arrays.equals(expected, actual);
@@ -49,8 +49,8 @@ public class ExceptionalConsumerTest {
     }
 
 
-    @Test(expected = leo.utils.functional.ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws leo.utils.functional.ExceptionalInvocationError {
+    @Test(expected = ExceptionalInvocationError.class)
+    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         // given
         String errorMessage = "The method invocation should fail due to invalid parameters.";
         Integer arg1 = -1;
@@ -58,7 +58,7 @@ public class ExceptionalConsumerTest {
         Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = leo.utils.functional.ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
+        Object[] actual = ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
 
         // Then
         boolean outcome = Arrays.equals(expected, actual);

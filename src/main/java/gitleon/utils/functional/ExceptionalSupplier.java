@@ -1,4 +1,4 @@
-package leo.utils.functional;
+package gitleon.utils.functional;
 
 
 /**
@@ -28,7 +28,7 @@ public interface ExceptionalSupplier<T> {
         try {
             return method.get();
         } catch (Throwable throwable) {
-            throw new leo.utils.functional.ExceptionalInvocationError(throwable, errorMessage);
+            throw new ExceptionalInvocationError(throwable, errorMessage);
         }
     }
 

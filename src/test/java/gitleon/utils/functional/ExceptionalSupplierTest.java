@@ -1,4 +1,4 @@
-package leo.utils.functional;
+package gitleon.utils.functional;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalSupplierTest {
-    private leo.utils.functional.ExceptionalSupplier function;
+    private ExceptionalSupplier function;
     private Integer value;
 
     @Before
@@ -30,14 +30,14 @@ public class ExceptionalSupplierTest {
     @Test
     public void positiveTest() {
         Integer expected = 1;
-        leo.utils.functional.ExceptionalSupplier.tryInvoke(function);
+        ExceptionalSupplier.tryInvoke(function);
         Assert.assertEquals(expected, value);
     }
 
-    @Test(expected = leo.utils.functional.ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws leo.utils.functional.ExceptionalInvocationError {
+    @Test(expected = ExceptionalInvocationError.class)
+    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         for(int i=0; i<6; i++) {
-            leo.utils.functional.ExceptionalSupplier.tryInvoke(function);
+            ExceptionalSupplier.tryInvoke(function);
         }
     }
 }
