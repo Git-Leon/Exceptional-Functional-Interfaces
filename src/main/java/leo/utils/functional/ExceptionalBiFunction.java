@@ -45,4 +45,25 @@ public interface ExceptionalBiFunction<FirstArgumentType, SecondArgumentType, Re
             throw new ExceptionalInvocationError(t, errorMessage);
         }
     }
+
+
+
+    /**
+     * Invokes and returns the specified method with the respective arguments
+     * Throws a `ExceptionalInvocationError` upon failure
+     *
+     * @param method       the method to be invoked
+     * @param arg1Value    the first argument of the method
+     * @param arg2Value    the last argument of the method
+     * @param <FirstArgumentType>   the type of the first argument of the function to call
+     * @param <SecondArgumentType>   the type of the second argument of the function to call
+     * @param <ReturnType> the return-type of the function to call
+     * @return the return-value of the method
+     */
+    static <FirstArgumentType, SecondArgumentType, ReturnType> ReturnType tryInvoke(
+            ExceptionalBiFunction<FirstArgumentType, SecondArgumentType, ReturnType> method,
+            FirstArgumentType arg1Value,
+            SecondArgumentType arg2Value) {
+        return tryInvoke(method, arg1Value, arg2Value, null);
+    }
 }

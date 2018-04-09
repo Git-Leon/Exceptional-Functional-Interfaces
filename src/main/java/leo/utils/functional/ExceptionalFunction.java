@@ -44,4 +44,20 @@ public interface ExceptionalFunction<ArgumentType, ReturnType> {
             throw new ExceptionalInvocationError(t, errorMessage);
         }
     }
+
+    /**
+     * Invokes and returns the specified method with the respective arguments
+     * Throws a `ExceptionalInvocationError` upon failure
+     *
+     * @param method         the method to be invoked
+     * @param argValue       the first argument of the method
+     * @param <ArgumentType> the type of the first argument of the method to call
+     * @param <ReturnType>   the return-type of the method to call
+     * @return the return-value of the method
+     */
+    static <ArgumentType, ReturnType> ReturnType tryInvoke(
+            ExceptionalFunction<ArgumentType, ReturnType> method,
+            ArgumentType argValue) {
+        return tryInvoke(method, argValue, null);
+    }
 }

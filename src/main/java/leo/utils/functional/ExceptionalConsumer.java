@@ -38,4 +38,20 @@ public interface ExceptionalConsumer<ArgumentType> {
             throw new ExceptionalInvocationError(throwable, errorMessage);
         }
     }
+
+
+    /**
+     * Invokes the specified method with the respective argument
+     * Throws a `ExceptionalInvocationError` upon failure
+     *
+     * @param method       method to be invoked
+     * @param arg          argument of the method to be invoked
+     * @param <ArgType>    type of argument of the method to be called
+     */
+    static <ArgType> void tryInvoke(
+            ExceptionalConsumer<ArgType> method,
+            ArgType arg) {
+        tryInvoke(method, arg, null);
+    }
+
 }
