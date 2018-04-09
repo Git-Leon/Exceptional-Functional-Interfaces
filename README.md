@@ -31,6 +31,8 @@ public static void main(String[] args) {
 
     String myName= "Leon";
     Integer myAge = 24;
-    ExceptionalBiFunction.tryInvoke(testFunction, "Name", myAge);
+    String error = "Failed to call function with arguments `%s` and `%s`";
+    String errorMessage = String.format(error, myName, myAge);
+    ExceptionalBiFunction.tryInvoke(testFunction, myName, myAge, errorMessage);
 }
 ```
