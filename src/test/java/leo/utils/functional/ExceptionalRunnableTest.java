@@ -34,7 +34,7 @@ public class ExceptionalRunnableTest {
 
     @Test(expected = ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             ExceptionalRunnable.tryInvoke(function);
         }
     }
