@@ -20,7 +20,7 @@ public static void main(String[] args) {
 
         // throws potential exception
         if(!validPerson) {
-            // Should bubble up to an `ExceptionalInvocationError`
+            // This line is impossible to declare within a java.util.BiFunction
             throw new Throwable();
         }
 
