@@ -8,7 +8,7 @@
 * This repository aims to help rememdy the deficiencies of Java 8 functional programming.
 
 ## What can I do with these interfaces that I cannot do with Java 8's built-in `FunctionalInterface`?
-* Users of this repository, can express code that explicitly throws `Exception`, without ever explicitly handling it by defering the `try`/`catch` to the respective `FunctionalInterface`
+* Users of this repository, can express code that explicitly throws `Exception`, without ever explicitly handling it by defering the `try`/`catch` to the respective `FunctionalInterface`'s static `tryInvoke` method.
 
 ```java
 public static void main(String[] args) {
