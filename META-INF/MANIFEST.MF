@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Name: gitleon/utils/functional/exceptionalfunctionalinterfaces
+Specification-Title: "Exceptional Functional Interfaces"
+Specification-Version: "1.0"
+Specification-Vendor: "Git-Leon".
+Implementation-Title: "gitleon.utils.functional.exceptionalfunctionalinterfaces"
+Implementation-Version: "build1"
+Implementation-Vendor: "Git-Leon"
