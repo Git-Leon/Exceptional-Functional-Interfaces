@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalFunctionTest {
-    private ExceptionalFunction<Object, Object[]> function;
+    private leo.utils.functional.ExceptionalFunction<Object, Object[]> function;
 
     @Before
     public void setup() {
@@ -37,21 +37,21 @@ public class ExceptionalFunctionTest {
         Object[] expected = { value };
 
         // When
-        Object[] actual = ExceptionalFunction.tryInvoke(function, value);
+        Object[] actual = leo.utils.functional.ExceptionalFunction.tryInvoke(function, value);
 
         // Then
         Assert.assertEquals(expected, actual);
     }
 
 
-    @Test(expected = ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
+    @Test(expected = leo.utils.functional.ExceptionalInvocationError.class)
+    public void exceptionalInvocationErrorTest() throws leo.utils.functional.ExceptionalInvocationError {
         // given
         Object value = -1;
         Object[] expected = { value };
 
         // When
-        Object[] actual = ExceptionalFunction.tryInvoke(function, value);
+        Object[] actual = leo.utils.functional.ExceptionalFunction.tryInvoke(function, value);
 
         // Then
         Assert.assertEquals(expected, actual);

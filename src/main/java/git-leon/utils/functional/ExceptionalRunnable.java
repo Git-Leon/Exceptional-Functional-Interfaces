@@ -32,7 +32,7 @@ public interface ExceptionalRunnable {
         try {
             method.run();
         } catch (Throwable throwable) {
-            throw new ExceptionalInvocationError(throwable, errorMessage);
+            throw new leo.utils.functional.ExceptionalInvocationError(throwable, errorMessage);
         }
     }
 

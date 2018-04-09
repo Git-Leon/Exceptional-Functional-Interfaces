@@ -35,7 +35,7 @@ public interface ExceptionalConsumer<ArgumentType> {
         try {
             method.accept(arg);
         } catch (Throwable throwable) {
-            throw new ExceptionalInvocationError(throwable, errorMessage);
+            throw new leo.utils.functional.ExceptionalInvocationError(throwable, errorMessage);
         }
     }
 

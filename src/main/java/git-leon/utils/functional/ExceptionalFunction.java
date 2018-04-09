@@ -41,7 +41,7 @@ public interface ExceptionalFunction<ArgumentType, ReturnType> {
         try {
             return method.apply(argValue);
         } catch (Throwable t) {
-            throw new ExceptionalInvocationError(t, errorMessage);
+            throw new leo.utils.functional.ExceptionalInvocationError(t, errorMessage);
         }
     }
 

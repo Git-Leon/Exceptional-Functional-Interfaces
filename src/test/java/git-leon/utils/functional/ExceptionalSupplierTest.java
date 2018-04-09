@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalSupplierTest {
-    private ExceptionalSupplier function;
+    private leo.utils.functional.ExceptionalSupplier function;
     private Integer value;
 
     @Before
@@ -30,14 +30,14 @@ public class ExceptionalSupplierTest {
     @Test
     public void positiveTest() {
         Integer expected = 1;
-        ExceptionalSupplier.tryInvoke(function);
+        leo.utils.functional.ExceptionalSupplier.tryInvoke(function);
         Assert.assertEquals(expected, value);
     }
 
-    @Test(expected = ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
+    @Test(expected = leo.utils.functional.ExceptionalInvocationError.class)
+    public void exceptionalInvocationErrorTest() throws leo.utils.functional.ExceptionalInvocationError {
         for(int i=0; i<6; i++) {
-            ExceptionalSupplier.tryInvoke(function);
+            leo.utils.functional.ExceptionalSupplier.tryInvoke(function);
         }
     }
 }

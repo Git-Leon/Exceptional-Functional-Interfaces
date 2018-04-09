@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalRunnableTest {
-    private ExceptionalRunnable function;
+    private leo.utils.functional.ExceptionalRunnable function;
     private Integer value;
 
     @Before
@@ -28,14 +28,14 @@ public class ExceptionalRunnableTest {
     @Test
     public void positiveTest() {
         Integer expected = 1;
-        ExceptionalRunnable.tryInvoke(function);
+        leo.utils.functional.ExceptionalRunnable.tryInvoke(function);
         Assert.assertEquals(expected, value);
     }
 
-    @Test(expected = ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
+    @Test(expected = leo.utils.functional.ExceptionalInvocationError.class)
+    public void exceptionalInvocationErrorTest() throws leo.utils.functional.ExceptionalInvocationError {
         for (int i = 0; i < 7; i++) {
-            ExceptionalRunnable.tryInvoke(function);
+            leo.utils.functional.ExceptionalRunnable.tryInvoke(function);
         }
     }
 }

@@ -28,7 +28,7 @@ public interface ExceptionalSupplier<T> {
         try {
             return method.get();
         } catch (Throwable throwable) {
-            throw new ExceptionalInvocationError(throwable, errorMessage);
+            throw new leo.utils.functional.ExceptionalInvocationError(throwable, errorMessage);
         }
     }
 

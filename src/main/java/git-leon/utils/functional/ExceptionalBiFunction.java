@@ -42,7 +42,7 @@ public interface ExceptionalBiFunction<FirstArgumentType, SecondArgumentType, Re
         try {
             return method.apply(arg1Value, arg2Value);
         } catch (Throwable t) {
-            throw new ExceptionalInvocationError(t, errorMessage);
+            throw new leo.utils.functional.ExceptionalInvocationError(t, errorMessage);
         }
     }
 
