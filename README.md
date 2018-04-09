@@ -4,7 +4,7 @@
 
 ## Background
 * With the advent of [Java 8 Lambdas](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html) and [Method References](https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html), functional programming in java has become increasingly popular.
-* Unfortunately, Java 8 did not account for creating lambda expressions which may throw an `Exception`. This shortcoming has caused a great deal of frustration when developing a codebase which should be expressed functionally rather than with object orientation.
+* Unfortunately, Java 8 did not account for creating lambda expressions which may throw an `Exception`. This shortcoming has caused a great deal of frustration when developing an exceptional-codebase which should be expressed functionally rather than with object orientation.
 * This repository aims to help rememdy the deficiencies of Java 8 functional programming.
 
 ## What can I do with these interfaces that I cannot do with Java 8's built-in `FunctionalInterface`?
