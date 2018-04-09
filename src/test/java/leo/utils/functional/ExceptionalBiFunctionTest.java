@@ -33,7 +33,7 @@ public class ExceptionalBiFunctionTest {
     @Test
     public void positiveTest() {
         // given
-        String errorMessage = "If this method fails, the positiveTest should fail.";
+        String errorMessage = "The method invocation should succeed";
         String arg1 = "value1";
         Integer arg2 = 5;
         Object[] expected = {arg1, arg2};
@@ -50,7 +50,7 @@ public class ExceptionalBiFunctionTest {
     @Test(expected = ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         // given
-        String errorMessage = "If this method fails, the positiveTest should fail.";
+        String errorMessage = "The method invocation should fail due to invalid parameters.";
         Integer arg1 = 5;
         String arg2 = "value1";
         Object[] expected = {arg1, arg2};

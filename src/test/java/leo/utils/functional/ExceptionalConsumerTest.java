@@ -35,7 +35,7 @@ public class ExceptionalConsumerTest {
     @Test
     public void positiveTest() {
         // given
-        String errorMessage = "If this method fails, the positiveTest should fail.";
+        String errorMessage = "The method invocation should work.";
         String arg1 = "testName";
         Integer arg2 = -1;
         Object[] expected = {arg1, arg2};
@@ -52,7 +52,7 @@ public class ExceptionalConsumerTest {
     @Test(expected = ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         // given
-        String errorMessage = "If this method fails, the positiveTest should pass.";
+        String errorMessage = "The method invocation should fail due to invalid parameters.";
         Integer arg1 = -1;
         String arg2 = "testName";
         Object[] expected = {arg1, arg2};

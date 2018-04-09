@@ -18,8 +18,8 @@ public class ExceptionalFunctionTest {
             if (!validName) {
                 // Should bubble up to an `ExceptionalInvocationError`
                 String error = "`%s` is of type `%s`, not `%s`.";
-                String actualType =name.getClass().toString();
-                String expectedType =  String.class.toString();
+                String actualType = name.getClass().getSimpleName();
+                String expectedType =  String.class.getSimpleName();
                 String errorMessage = String.format(error, name, actualType, expectedType);
                 throw new Throwable(errorMessage);
             }
