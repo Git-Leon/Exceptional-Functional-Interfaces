@@ -41,54 +41,8 @@ public static void main(String[] args) {
 ### Maven
 * Ensure your `pom.xml` configures these 3 aspects:
     * java language level is set to 8 or higher
-
-        ```xml
-        <!--Set language level to Java 8 -->
-        <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.6.1</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </build>
-        ```
-        
     * specify the use of the `git-leon` repository
-    
-        ```xml
-        <!-- Specify the use of git-leon repository -->
-        <repositories>
-            <repository>
-                <id>git-leon-exceptional-functional-interface</id>
-                <url>https://packagecloud.io/git-leon/utils/maven2</url>
-                <releases>
-                    <enabled>true</enabled>
-                </releases>
-                <snapshots>
-                    <enabled>true</enabled>
-                </snapshots>
-            </repository>
-        </repositories>
-        ```
-
     * specify artifact dependency
-    
-        ```xml
-        <!-- Dependency for artifact -->
-        <dependencies>
-            <dependency>
-                <groupId>"git-leon"</groupId>
-                <artifactId>"gitleon.utils.functional.exceptionalfunctionalinterfaces"</artifactId>
-                <version>"build1"</version>
-            </dependency>
-        <dependencies>
-        ```
 
 ### Sample `pom.xml`
 
