@@ -1,5 +1,7 @@
 package gitleon.utils.functional;
 
+import gitleon.utils.exceptionalfunctionalinterface.ExceptionalFunction;
+import gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +10,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalFunctionTest {
-    private ExceptionalFunction<Object, Object[]> function;
+    private gitleon.utils.exceptionalfunctionalinterface.ExceptionalFunction<Object, Object[]> function;
 
     @Before
     public void setup() {
@@ -37,14 +39,14 @@ public class ExceptionalFunctionTest {
         Object[] expected = { value };
 
         // When
-        Object[] actual = ExceptionalFunction.tryInvoke(function, value);
+        Object[] actual = gitleon.utils.exceptionalfunctionalinterface.ExceptionalFunction.tryInvoke(function, value);
 
         // Then
         Assert.assertEquals(expected, actual);
     }
 
 
-    @Test(expected = ExceptionalInvocationError.class)
+    @Test(expected = gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         // given
         Object value = -1;

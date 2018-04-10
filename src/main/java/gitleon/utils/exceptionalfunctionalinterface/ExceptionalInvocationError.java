@@ -1,4 +1,4 @@
-package gitleon.utils.functional;
+package gitleon.utils.exceptionalfunctionalinterface;
 
 /**
  * Defers exceptions to an `Error` object which is checked during runtime

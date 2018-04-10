@@ -1,5 +1,7 @@
 package gitleon.utils.functional;
 
+import gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError;
+import gitleon.utils.exceptionalfunctionalinterface.ExceptionalSupplier;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +10,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalSupplierTest {
-    private ExceptionalSupplier function;
+    private gitleon.utils.exceptionalfunctionalinterface.ExceptionalSupplier function;
     private Integer value;
 
     @Before
@@ -30,11 +32,11 @@ public class ExceptionalSupplierTest {
     @Test
     public void positiveTest() {
         Integer expected = 1;
-        ExceptionalSupplier.tryInvoke(function);
+        gitleon.utils.exceptionalfunctionalinterface.ExceptionalSupplier.tryInvoke(function);
         Assert.assertEquals(expected, value);
     }
 
-    @Test(expected = ExceptionalInvocationError.class)
+    @Test(expected = gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         for(int i=0; i<6; i++) {
             ExceptionalSupplier.tryInvoke(function);

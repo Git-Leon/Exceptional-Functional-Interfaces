@@ -1,4 +1,4 @@
-package gitleon.utils.functional;
+package gitleon.utils.exceptionalfunctionalinterface;
 
 /**
  * Behaves as a `BiFunction` object whose `apply` method throws a `Throwable`
@@ -42,7 +42,7 @@ public interface ExceptionalBiFunction<FirstArgumentType, SecondArgumentType, Re
         try {
             return method.apply(arg1Value, arg2Value);
         } catch (Throwable t) {
-            throw new ExceptionalInvocationError(t, errorMessage);
+            throw new gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError(t, errorMessage);
         }
     }
 

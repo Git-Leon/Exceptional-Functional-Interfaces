@@ -1,5 +1,7 @@
 package gitleon.utils.functional;
 
+import gitleon.utils.exceptionalfunctionalinterface.ExceptionalBiFunction;
+import gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +12,7 @@ import java.util.Arrays;
  * @author leon on 4/9/18.
  */
 public class ExceptionalConsumerTest {
-    private ExceptionalBiFunction<Object, Object, Object[]> testFunction;
+    private gitleon.utils.exceptionalfunctionalinterface.ExceptionalBiFunction<Object, Object, Object[]> testFunction;
 
     @Before
     public void setup() {
@@ -41,7 +43,7 @@ public class ExceptionalConsumerTest {
         Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
+        Object[] actual = gitleon.utils.exceptionalfunctionalinterface.ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
 
         // Then
         boolean outcome = Arrays.equals(expected, actual);
@@ -49,7 +51,7 @@ public class ExceptionalConsumerTest {
     }
 
 
-    @Test(expected = ExceptionalInvocationError.class)
+    @Test(expected = gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         // given
         String errorMessage = "The method invocation should fail due to invalid parameters.";

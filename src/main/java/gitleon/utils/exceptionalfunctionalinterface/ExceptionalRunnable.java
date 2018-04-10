@@ -1,4 +1,4 @@
-package gitleon.utils.functional;
+package gitleon.utils.exceptionalfunctionalinterface;
 
 
 /**
@@ -32,7 +32,7 @@ public interface ExceptionalRunnable {
         try {
             method.run();
         } catch (Throwable throwable) {
-            throw new ExceptionalInvocationError(throwable, errorMessage);
+            throw new gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError(throwable, errorMessage);
         }
     }
 
