@@ -91,10 +91,11 @@ public static void main(String[] args) {
     <!-- Dependency for artifact -->
     <dependencies>
         <dependency>
-            <groupId>"git-leon"</groupId>
-            <artifactId>"gitleon.utils.functional.exceptionalfunctionalinterfaces"</artifactId>
-            <version>"build1"</version>
+          <groupId>"git-leon"</groupId>
+          <artifactId>"exceptional-functional-interfaces"</artifactId>
+          <version>"1.1"</version>
         </dependency>
     <dependencies>
+</project>
         
 ```
