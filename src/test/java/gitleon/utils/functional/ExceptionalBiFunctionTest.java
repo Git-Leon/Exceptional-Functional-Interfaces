@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalBiFunctionTest {
-    gitleon.utils.exceptionalfunctionalinterface.ExceptionalBiFunction<Object, Object, Object[]> method;
+    ExceptionalBiFunction<Object, Object, Object[]> method;
 
     @Before
     public void setup() {
@@ -41,7 +41,7 @@ public class ExceptionalBiFunctionTest {
         Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = gitleon.utils.exceptionalfunctionalinterface.ExceptionalBiFunction.tryInvoke(method, arg1, arg2, errorMessage);
+        Object[] actual = ExceptionalBiFunction.tryInvoke(method, arg1, arg2, errorMessage);
 
         // then
         Assert.assertEquals(expected, actual);
@@ -49,7 +49,7 @@ public class ExceptionalBiFunctionTest {
 
 
 
-    @Test(expected = gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError.class)
+    @Test(expected = ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         // given
         String errorMessage = "The method invocation should fail due to invalid parameters.";

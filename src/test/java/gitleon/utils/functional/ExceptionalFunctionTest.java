@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalFunctionTest {
-    private gitleon.utils.exceptionalfunctionalinterface.ExceptionalFunction<Object, Object[]> function;
+    private ExceptionalFunction<Object, Object[]> function;
 
     @Before
     public void setup() {
@@ -39,14 +39,14 @@ public class ExceptionalFunctionTest {
         Object[] expected = { value };
 
         // When
-        Object[] actual = gitleon.utils.exceptionalfunctionalinterface.ExceptionalFunction.tryInvoke(function, value);
+        Object[] actual = ExceptionalFunction.tryInvoke(function, value);
 
         // Then
         Assert.assertEquals(expected, actual);
     }
 
 
-    @Test(expected = gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError.class)
+    @Test(expected = ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         // given
         Object value = -1;

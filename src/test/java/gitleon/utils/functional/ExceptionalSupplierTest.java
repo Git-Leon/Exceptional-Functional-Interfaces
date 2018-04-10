@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author leon on 4/9/18.
  */
 public class ExceptionalSupplierTest {
-    private gitleon.utils.exceptionalfunctionalinterface.ExceptionalSupplier function;
+    private ExceptionalSupplier function;
     private Integer value;
 
     @Before
@@ -32,11 +32,11 @@ public class ExceptionalSupplierTest {
     @Test
     public void positiveTest() {
         Integer expected = 1;
-        gitleon.utils.exceptionalfunctionalinterface.ExceptionalSupplier.tryInvoke(function);
+        ExceptionalSupplier.tryInvoke(function);
         Assert.assertEquals(expected, value);
     }
 
-    @Test(expected = gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError.class)
+    @Test(expected = ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         for(int i=0; i<6; i++) {
             ExceptionalSupplier.tryInvoke(function);

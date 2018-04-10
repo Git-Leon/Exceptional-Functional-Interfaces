@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @author leon on 4/9/18.
  */
 public class ExceptionalConsumerTest {
-    private gitleon.utils.exceptionalfunctionalinterface.ExceptionalBiFunction<Object, Object, Object[]> testFunction;
+    private ExceptionalBiFunction<Object, Object, Object[]> testFunction;
 
     @Before
     public void setup() {
@@ -43,7 +43,7 @@ public class ExceptionalConsumerTest {
         Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = gitleon.utils.exceptionalfunctionalinterface.ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
+        Object[] actual = ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
 
         // Then
         boolean outcome = Arrays.equals(expected, actual);
@@ -51,7 +51,7 @@ public class ExceptionalConsumerTest {
     }
 
 
-    @Test(expected = gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError.class)
+    @Test(expected = ExceptionalInvocationError.class)
     public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
         // given
         String errorMessage = "The method invocation should fail due to invalid parameters.";
