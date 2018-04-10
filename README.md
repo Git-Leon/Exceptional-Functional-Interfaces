@@ -36,3 +36,111 @@ public static void main(String[] args) {
     ExceptionalBiFunction.tryInvoke(testFunction, myName, myAge, optionalErrorMessage);
 }
 ```
+
+## How do I use this in my project?
+### Maven
+* Ensure your `pom.xml` configures these 3 aspects:
+    * java language level is set to 8 or higher
+
+        ```xml
+        <!--Set language level to Java 8 -->
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.1</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </build>
+        ```
+        
+    * specify the use of the `git-leon` repository
+    
+        ```xml
+        <!-- Specify the use of git-leon repository -->
+        <repositories>
+            <repository>
+                <id>git-leon-exceptional-functional-interface</id>
+                <url>https://packagecloud.io/git-leon/utils/maven2</url>
+                <releases>
+                    <enabled>true</enabled>
+                </releases>
+                <snapshots>
+                    <enabled>true</enabled>
+                </snapshots>
+            </repository>
+        </repositories>
+        ```
+
+    * specify artifact dependency
+    
+        ```xml
+        <!-- Dependency for artifact -->
+        <dependencies>
+            <dependency>
+                <groupId>"git-leon"</groupId>
+                <artifactId>"gitleon.utils.functional.exceptionalfunctionalinterfaces"</artifactId>
+                <version>"build1"</version>
+            </dependency>
+        <dependencies>
+        ```
+
+### Sample `pom.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>mygroupid</groupId>
+    <artifactId>myartifact</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <!--Set language level to Java 8 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Specify the use of git-leon repository -->
+    <repositories>
+        <repository>
+            <id>git-leon-exceptional-functional-interface</id>
+            <url>https://packagecloud.io/git-leon/utils/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+
+    <!-- Dependency for artifact -->
+    <dependencies>
+        <dependency>
+            <groupId>"git-leon"</groupId>
+            <artifactId>"gitleon.utils.functional.exceptionalfunctionalinterfaces"</artifactId>
+            <version>"build1"</version>
+        </dependency>
+    <dependencies>
+        
+```
