@@ -13,7 +13,6 @@
 ```java
 public static void main(String[] args) {
     ExceptionalBiFunction<Object, Object, Object[]> testFunction = (name, age) -> {
-        Object[] person = new Object[2];
         boolean validName = name instanceof String;
         boolean validAge = age instanceof Integer;
         boolean validPerson = validName && validAge;
@@ -23,7 +22,8 @@ public static void main(String[] args) {
             // This line is impossible to declare within a java.util.BiFunction
             throw new Throwable();
         }
-
+        
+        Object[] person = new Object[2];
         person[1] = age;
         person[0] = name;
         return person;
