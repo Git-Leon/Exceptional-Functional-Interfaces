@@ -37,6 +37,18 @@ public static void main(String[] args) {
 }
 ```
 
+* This dependency also includes a fallback feature, which allows you to pass a fallback method in the case of an exception.
+
+```java
+    public Person create(Person person) {
+        return ExceptionalFunction.tryInvoke(repository::save, person, () -> 
+                ExceptionalFunction.tryInvoke(repository::save, person, () -> // first exception handling
+                        ExceptionalFunction.tryInvoke(repository::save, person, () -> // second exception handling 
+                                ExceptionalFunction.tryInvoke(repository::save, person, () -> // third exception handling
+                                        ExceptionalFunction.tryInvoke(repository::save, person)))));
+    }
+```
+
 ## How do I use this in my project?
 ### Maven
 * Ensure your `pom.xml` configures these 3 aspects:
