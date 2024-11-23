@@ -34,8 +34,8 @@ public class ExceptionalRunnableTest {
         Assert.assertEquals(expected, value);
     }
 
-    @Test(expected = ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
+    @Test
+    public void exceptionalInvocationErrorTest() {
         for (int i = 0; i < 7; i++) {
             ExceptionalRunnable.tryInvoke(function);
         }

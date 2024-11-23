@@ -27,7 +27,29 @@ public interface ExceptionalRunnable {
      * @param method       method to be invoked
      * @param fallback     method to invoke in case of exception
      */
-    static void tryInvoke(ExceptionalRunnable method, ExceptionalRunnable fallback) {
+    static void tryInvoke(final ExceptionalRunnable method, final Runnable fallback) {
+        try {
+            method.run();
+        } catch (Throwable firstFailure) {
+            firstFailure.printStackTrace();
+            try {
+                fallback.run();
+            } catch (Throwable fallbackFailure) {
+                fallbackFailure.initCause(firstFailure);
+                throw new ExceptionalInvocationError(fallbackFailure);
+            }
+        }
+    }
+
+
+
+    /**
+     * Invokes the specified method with the respective argument
+     *
+     * @param method       method to be invoked
+     * @param fallback     method to invoke in case of exception
+     */
+    static void tryInvoke(final ExceptionalRunnable method, final ExceptionalRunnable fallback) {
         try {
             method.run();
         } catch (Throwable firstFailure) {
@@ -48,7 +70,8 @@ public interface ExceptionalRunnable {
      *
      * @param method       method to be invoked
      */
-    static void tryInvoke(ExceptionalRunnable method) {
-        tryInvoke(method, null);
+    static void tryInvoke(final ExceptionalRunnable method) {
+        final ExceptionalRunnable runnable = () -> {};
+        tryInvoke(method, runnable);
     }
 }

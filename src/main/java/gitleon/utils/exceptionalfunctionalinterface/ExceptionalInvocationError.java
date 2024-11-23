@@ -7,12 +7,12 @@ package gitleon.utils.exceptionalfunctionalinterface;
 public class ExceptionalInvocationError extends Error {
     private final String errorMessage;
 
-    public ExceptionalInvocationError(Throwable throwable, String errorMessage) {
+    public ExceptionalInvocationError(final Throwable throwable, final String errorMessage) {
         super(throwable);
         this.errorMessage = errorMessage + "\n\n" + throwable.getMessage();
     }
 
-    public ExceptionalInvocationError(Throwable throwable) {
+    public ExceptionalInvocationError(final Throwable throwable) {
         this(throwable, "");
     }
 
