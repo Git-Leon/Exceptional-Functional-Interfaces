@@ -35,13 +35,12 @@ public class ExceptionalBiFunctionTest {
     @Test
     public void positiveTest() {
         // given
-        String errorMessage = "The method invocation should succeed";
         String arg1 = "value1";
         Integer arg2 = 5;
         Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = ExceptionalBiFunction.tryInvoke(method, arg1, arg2, errorMessage);
+        Object[] actual = ExceptionalBiFunction.tryInvoke(method, arg1, arg2);
 
         // then
         Assert.assertEquals(expected, actual);
@@ -49,18 +48,16 @@ public class ExceptionalBiFunctionTest {
 
 
 
-    @Test(expected = ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
+    @Test
+    public void exceptionalInvocationErrorTest() {
         // given
-        String errorMessage = "The method invocation should fail due to invalid parameters.";
         Integer arg1 = 5;
         String arg2 = "value1";
-        Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = ExceptionalBiFunction.tryInvoke(method, arg1, arg2, errorMessage);
+        Object[] actual = ExceptionalBiFunction.tryInvoke(method, arg1, arg2);
 
         // then
-        Assert.assertEquals(expected, actual);
+        Assert.assertNull(actual);
     }
 }

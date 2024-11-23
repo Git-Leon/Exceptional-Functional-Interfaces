@@ -36,8 +36,8 @@ public class ExceptionalSupplierTest {
         Assert.assertEquals(expected, value);
     }
 
-    @Test(expected = ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
+    @Test
+    public void exceptionalInvocationErrorTest() {
         for(int i=0; i<6; i++) {
             ExceptionalSupplier.tryInvoke(function);
         }

@@ -10,6 +10,8 @@ package gitleon.utils.exceptionalfunctionalinterface;
  * @author Leon Hunter on 4/6/18.
  */
 
+import java.util.function.Supplier;
+
 /**
  * @param <ArgumentType>
  * @param <ReturnType>
@@ -25,29 +27,33 @@ public interface ExceptionalFunction<ArgumentType, ReturnType> {
 
     /**
      * Invokes and returns the specified method with the respective arguments
-     * Throws a `ExceptionalInvocationError` upon failure
      *
      * @param method         the method to be invoked
      * @param argValue       the first argument of the method
-     * @param errorMessage   the error message to be displayed if exception is thrown
+     * @param fallback     method to invoke in case of exception
      * @param <ArgumentType> the type of the first argument of the method to call
      * @param <ReturnType>   the return-type of the method to call
      * @return the return-value of the method
      */
     static <ArgumentType, ReturnType> ReturnType tryInvoke(
-            ExceptionalFunction<ArgumentType, ReturnType> method,
-            ArgumentType argValue,
-            String errorMessage) {
+            final ExceptionalFunction<ArgumentType, ReturnType> method,
+            final ArgumentType argValue,
+            final ExceptionalSupplier<ReturnType> fallback) {
         try {
             return method.apply(argValue);
-        } catch (Throwable t) {
-            throw new gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError(t, errorMessage);
+        } catch (Throwable firstFailure) {
+            firstFailure.printStackTrace();
+            try {
+                return fallback.get();
+            } catch(Throwable fallbackFailure) {
+                fallbackFailure.initCause(firstFailure);
+                throw new ExceptionalInvocationError(fallbackFailure);
+            }
         }
     }
 
     /**
      * Invokes and returns the specified method with the respective arguments
-     * Throws a `ExceptionalInvocationError` upon failure
      *
      * @param method         the method to be invoked
      * @param argValue       the first argument of the method
@@ -58,6 +64,6 @@ public interface ExceptionalFunction<ArgumentType, ReturnType> {
     static <ArgumentType, ReturnType> ReturnType tryInvoke(
             ExceptionalFunction<ArgumentType, ReturnType> method,
             ArgumentType argValue) {
-        return tryInvoke(method, argValue, null);
+        return tryInvoke(method, argValue, () -> null);
     }
 }

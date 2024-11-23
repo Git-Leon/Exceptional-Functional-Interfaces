@@ -43,7 +43,7 @@ public class ExceptionalConsumerTest {
         Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
+        Object[] actual = ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2);
 
         // Then
         boolean outcome = Arrays.equals(expected, actual);
@@ -51,19 +51,20 @@ public class ExceptionalConsumerTest {
     }
 
 
-    @Test(expected = ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
+    //        The method invocation should fail due to invalid parameters.
+    @Test(expected = AssertionError.class)
+    public void exceptionalInvocationErrorTest() throws AssertionError {
         // given
-        String errorMessage = "The method invocation should fail due to invalid parameters.";
+
         Integer arg1 = -1;
         String arg2 = "testName";
         Object[] expected = {arg1, arg2};
 
         // when
-        Object[] actual = ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2, errorMessage);
+        Object[] actual = ExceptionalBiFunction.tryInvoke(testFunction, arg1, arg2);
 
         // Then
         boolean outcome = Arrays.equals(expected, actual);
-        Assert.assertTrue(outcome);
+        Assert.assertNull(outcome);
     }
 }

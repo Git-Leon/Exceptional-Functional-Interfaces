@@ -1,6 +1,8 @@
 package gitleon.utils.exceptionalfunctionalinterface;
 
 
+import java.util.function.Supplier;
+
 /**
  * Behaves as a `Consumer` object whose `accept` method throws a `Throwable`
  *
@@ -21,28 +23,32 @@ public interface ExceptionalConsumer<ArgumentType> {
 
     /**
      * Invokes the specified method with the respective argument
-     * Throws a `ExceptionalInvocationError` upon failure
      *
      * @param method       method to be invoked
      * @param arg          argument of the method to be invoked
-     * @param errorMessage message to display upon invocation failure
+     * @param fallback     method to invoke in case of exception
      * @param <ArgType>    type of argument of the method to be called
      */
     static <ArgType> void tryInvoke(
-            ExceptionalConsumer<ArgType> method,
-            ArgType arg,
-            String errorMessage) {
+            final ExceptionalConsumer<ArgType> method,
+            final ArgType arg,
+            final ExceptionalRunnable fallback) {
         try {
             method.accept(arg);
-        } catch (Throwable throwable) {
-            throw new gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError(throwable, errorMessage);
+        } catch (Throwable firstFailure) {
+            firstFailure.printStackTrace();
+            try {
+                fallback.run();
+            } catch (Throwable fallbackFailure) {
+                fallbackFailure.initCause(firstFailure);
+                throw new ExceptionalInvocationError(fallbackFailure);
+            }
         }
     }
 
 
     /**
      * Invokes the specified method with the respective argument
-     * Throws a `ExceptionalInvocationError` upon failure
      *
      * @param method       method to be invoked
      * @param arg          argument of the method to be invoked
@@ -51,7 +57,7 @@ public interface ExceptionalConsumer<ArgumentType> {
     static <ArgType> void tryInvoke(
             ExceptionalConsumer<ArgType> method,
             ArgType arg) {
-        tryInvoke(method, arg, null);
+        tryInvoke(method, arg, ()->{});
     }
 
 }

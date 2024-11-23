@@ -46,17 +46,16 @@ public class ExceptionalFunctionTest {
     }
 
 
-    @Test(expected = ExceptionalInvocationError.class)
-    public void exceptionalInvocationErrorTest() throws ExceptionalInvocationError {
+    @Test
+    public void exceptionalInvocationErrorTest() {
         // given
         Object value = -1;
-        Object[] expected = { value };
 
         // When
         Object[] actual = ExceptionalFunction.tryInvoke(function, value);
 
         // Then
-        Assert.assertEquals(expected, actual);
+        Assert.assertNull(actual);
     }
 
 

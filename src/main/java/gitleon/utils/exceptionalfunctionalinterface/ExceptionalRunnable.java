@@ -23,16 +23,21 @@ public interface ExceptionalRunnable {
 
     /**
      * Invokes the specified method with the respective argument
-     * Throws a `ExceptionalInvocationError` upon failure
      *
      * @param method       method to be invoked
-     * @param errorMessage message to display upon invocation failure
+     * @param fallback     method to invoke in case of exception
      */
-    static void tryInvoke(ExceptionalRunnable method, String errorMessage) {
+    static void tryInvoke(ExceptionalRunnable method, ExceptionalRunnable fallback) {
         try {
             method.run();
-        } catch (Throwable throwable) {
-            throw new gitleon.utils.exceptionalfunctionalinterface.ExceptionalInvocationError(throwable, errorMessage);
+        } catch (Throwable firstFailure) {
+            firstFailure.printStackTrace();
+            try {
+                fallback.run();
+            } catch (Throwable fallbackFailure) {
+                fallbackFailure.initCause(firstFailure);
+                throw new ExceptionalInvocationError(fallbackFailure);
+            }
         }
     }
 
@@ -40,7 +45,6 @@ public interface ExceptionalRunnable {
 
     /**
      * Invokes the specified method with the respective argument
-     * Throws a `ExceptionalInvocationError` upon failure
      *
      * @param method       method to be invoked
      */
