@@ -1,3 +1,8 @@
+package_cloud_username=""
+package_cloud_packagename=""
+read -p "Enter PackageCloud username: " package_cloud_username
+read -p "Enter PackageCloud package name: " package_cloud_packagename
+
 rm -rf target
 rm dependency-reduced-pom.xml
 ls
@@ -13,16 +18,30 @@ if ! [[ -f "./mvnw" ]]; then
 fi
 
 echo Fetching project metadata...
-project_version=`./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout`
 project_name=`./mvnw help:evaluate -Dexpression=project.name -q -DforceStdout`
+project_version=`./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout`
 project_groupId=`./mvnw help:evaluate -Dexpression=project.groupId -q -DforceStdout`
 project_artifactId=`./mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout`
-project_version=`./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout`
-project_build_directory=`./mvnw help:evaluate -Dexpression=project.build.directory`
-package_cloud_username=""
-package_cloud_packagename=""
-read -p "Enter PackageCloud username: " package_cloud_username
-read -p "Enter PackageCloud package name: " package_cloud_packagename
 
+
+artifact_target=$package_cloud_username/$package_cloud_packagename
+artifact_origin=./target/$project_artifactId-$project_version.jar
+artifact_coords=$project_groupId:$project_artifactId:$project_version
+
+echo "project_name: "            $project_name
+echo "project_version: "         $project_version
+echo "project_groupId: "         $project_groupId
+echo "project_artifactId: "      $project_artifactId
+
+echo "artifact_target: "         $artifact_target
+echo "artifact_origin: "         $artifact_origin
+echo "artifact_coords: "         $artifact_coords
+
+
+echo Building maven application
+echo ./mvnw package -Dmaven.test.skip=true
 ./mvnw package -Dmaven.test.skip=true
-package_cloud push $package_cloud_username/$package_cloud_packagename ./target/$project_artifactId-$project_version.jar --coordinates=$project_groupId:$project_artifactId:$project_version
+
+
+echo Pushing to package cloud
+printf "0\n0\ny\n" | package_cloud push $artifact_target $artifact_origin --coordinates=$artifact_coords
